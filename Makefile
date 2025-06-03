@@ -1,11 +1,14 @@
 .DEFAULT_GOAL := all
 .PHONY: all
 
-CXX=clang++
-COMPILE_FLAGS=$(CXXFLAGS) -g3 -std=c++17
-
 BUILDDIR := build
 SRCDIR := src
+TESTSRCDIR := test
+
+CXX=clang++
+COMPILE_FLAGS=$(CXXFLAGS) -g3 -std=c++17
+TEST_COMPILE_FLAGS=$(CXXFLAGS) -std=c++17 -Wall -Wextra -pthread -I $(SRCDIR)
+TEST_LIBS = -lgtest -lgtest_main -lpthread
 
 HDRS := $(addprefix $(SRCDIR)/, \
 	Bond.h \
@@ -14,15 +17,24 @@ HDRS := $(addprefix $(SRCDIR)/, \
 )
 
 SRCS := $(addprefix $(SRCDIR)/, \
-	main.cpp \
 	Bond.cpp \
 	Stock.cpp \
 )
 
 all: $(BUILDDIR)/pnl
 
-$(BUILDDIR)/pnl: $(SRCS) | $(BUILDDIR)
+$(BUILDDIR)/pnl: $(SRCDIR)/main.cpp $(SRCS) | $(BUILDDIR)
 	$(CXX) $(COMPILE_FLAGS) $^ -o $(BUILDDIR)/pnl
+
+TEST_SRCS = $(addprefix $(TESTSRCDIR)/, \
+	test_stock.cpp test_bond.cpp \
+	test_instrument.cpp )
+
+test: $(BUILDDIR)/pnltest
+	$(BUILDDIR)/pnltest
+
+$(BUILDDIR)/pnltest: $(TEST_SRCS) $(SRCS)| $(BUILDDIR)
+	$(CXX) $(TEST_COMPILE_FLAGS) -o $@ $^ $(TEST_LIBS)
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)

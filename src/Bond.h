@@ -11,6 +11,8 @@ protected:
 public:
     Bond(const std::string &sym, const std::string &nam, double fv, double cr);
     double calculateUnitPnL(double currentPrice, double purchasePrice) const override;
+    double getFaceValue() const { return faceValue; }
+    double getCouponRate() const { return couponRate; }
 };
 
 #endif  // PNL_BOND_H_
