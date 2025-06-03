@@ -6,6 +6,7 @@
 class Stock : public Instrument {
 public:
     Stock(std::string sym, std::string nam);
+    ~Stock() = default;
     double calculateUnitPnL(double currPrice, double purPrice) const override;
 };
 

@@ -13,11 +13,15 @@ TEST_LIBS = -lgtest -lgtest_main -lpthread
 HDRS := $(addprefix $(SRCDIR)/, \
 	Bond.h \
 	Instrument.h \
+	Portfolio.h \
+	Position.h \
 	Stock.h \
 )
 
 SRCS := $(addprefix $(SRCDIR)/, \
 	Bond.cpp \
+	Portfolio.cpp \
+	Position.cpp \
 	Stock.cpp \
 )
 
@@ -27,8 +31,11 @@ $(BUILDDIR)/pnl: $(SRCDIR)/main.cpp $(SRCS) | $(BUILDDIR)
 	$(CXX) $(COMPILE_FLAGS) $^ -o $(BUILDDIR)/pnl
 
 TEST_SRCS = $(addprefix $(TESTSRCDIR)/, \
-	test_stock.cpp test_bond.cpp \
-	test_instrument.cpp )
+	test_bond.cpp \
+	test_instrument.cpp \
+	test_portfolio.cpp \
+	test_position.cpp \
+	test_stock.cpp )
 
 test: $(BUILDDIR)/pnltest
 	$(BUILDDIR)/pnltest
