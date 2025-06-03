@@ -27,7 +27,7 @@ $(BUILDDIR)/pnl: $(SRCDIR)/main.cpp $(SRCS) | $(BUILDDIR)
 	$(CXX) $(COMPILE_FLAGS) $^ -o $(BUILDDIR)/pnl
 
 TEST_SRCS = $(addprefix $(TESTSRCDIR)/, \
-	main.cpp test_stock.cpp test_bond.cpp \
+	test_stock.cpp test_bond.cpp \
 	test_instrument.cpp )
 
 test: $(BUILDDIR)/pnltest
