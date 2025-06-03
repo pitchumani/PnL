@@ -34,7 +34,7 @@ test: $(BUILDDIR)/pnltest
 	$(BUILDDIR)/pnltest
 
 $(BUILDDIR)/pnltest: $(TEST_SRCS) $(SRCS)| $(BUILDDIR)
-	$(CXX) $(TEST_COMPILE_FLAGS) $(TEST_LIBS) $^ -o $(BUILDDIR)/pnltest
+	$(CXX) $(TEST_COMPILE_FLAGS) -o $@ $^ $(TEST_LIBS)
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
