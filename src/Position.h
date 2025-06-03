@@ -1,7 +1,8 @@
 #ifndef PNL_POSITION_H_
 #define PNL_POSITION_H_
 
-#include<string>
+#include <memory>
+#include <string>
 
 #include "Instrument.h"
 

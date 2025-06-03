@@ -1,4 +1,3 @@
-// filepath: /Users/pitchumani/code/pnl-calc/test/test_portfolio.cpp
 #include <gtest/gtest.h>
 #include <memory>
 #include <unordered_map>
