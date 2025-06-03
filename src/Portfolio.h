@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <optional>
+#include <stdexcept>
+#include <algorithm>
 #include "Position.h"
 
 class Portfolio {

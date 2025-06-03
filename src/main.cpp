@@ -1,4 +1,7 @@
-#include<iostream>
+#include <iostream>
+#include <memory>
+#include <map>
+#include <stdexcept>
 
 #include "Bond.h"
 #include "Stock.h"

@@ -3,6 +3,8 @@
 
 #include <memory>
 #include <string>
+#include <stdexcept>
+#include <utility>
 
 #include "Instrument.h"
 
